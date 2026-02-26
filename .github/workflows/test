@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:  # 在 Actions 页点击 “Run workflow” 直接发起
+
+jobs:
+  ci:
+    runs-on: self-hosted
+    container:
+      image: ubuntu:22.04
+      options: --user root
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies (example)
+        run: |
+          sleep 1000
